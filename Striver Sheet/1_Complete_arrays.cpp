@@ -509,6 +509,98 @@ int lengthOfLongestSubstring(string s) {
     return len;
 }
 
+vector<vector<int>> ThreeSum(vector<int> v , int target){
+    sort(v.begin() , v.end());
+    int n = v.size();
+    vector<vector<int>> ans;
+    for (int i = 0; i < n-2; i++)
+    {
+        if (i > 0 && v[i] == v[i-1])
+        {
+            continue;
+        }
+        int j = i+1 , k = n-1;
+        while (j < k)
+        {
+            int sum = v[i]+v[j]+v[k];
+            if (sum == target)
+            {
+                ans.push_back({v[i] , v[j] , v[k]});
+                while (j < k && v[j] == v[j+1])
+                {
+                    j++;
+                }
+                while (j < k && v[k] == v[k-1])
+                {
+                    k--;
+                }
+                j++;
+                k--;
+            }
+            else if (sum < target)
+            {
+                j++;
+            }
+            else
+            {
+                k--;
+            }
+        }
+    }
+    return ans;
+}
+
+int TrappingRainWater(int arr[] , int n){
+    int left[n];
+    left[0] = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        left[i] = max(left[i-1] , arr[i]);
+    }
+    int right[n];
+    right[n-1] = arr[n-1];
+    for (int i = n-2; i >= 0; i--)
+    {
+        right[i] = max(right[i+1] , arr[i]);
+    }
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        ans += (min(left[i] , right[i]) - arr[i]);
+    }
+    return ans;
+}
+
+int removeDuplicate(vector<int> v){
+    int j = 0;
+    for (int i = 1; i < v.size(); i++)
+    {
+        if (v[i] != v[j])
+        {
+            v[j++] = v[i];
+        }
+    }
+    return j;
+}
+
+int maxConsequtiveOnes(vector<int> v){
+    int c = 0;
+    int mx = 0;
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (v[i] != 1)
+        {
+            mx = max(c , mx);
+            c = 0;
+        }
+        else
+        {
+            c++;
+        }
+    }
+    return max(c , mx);
+}
+
 int main(){
 
 }
