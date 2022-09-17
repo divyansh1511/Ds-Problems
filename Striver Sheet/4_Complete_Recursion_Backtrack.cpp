@@ -287,6 +287,67 @@ void solveSudoku(vector<vector<char>> &board){
     helper8(board , 0 , 0);
 }
 
+bool possiblecol(int color, int node, bool gr[101][101], vector<int> col,int n){
+        for(int i = 0;i<n;i++){
+            if(i!=node && gr[node][i]==1 && col[i]==color)
+                return false;
+        }
+        return true;
+    }
+
+bool solve(int node, int n, bool gr[101][101], vector<int> &col, int m){
+        if(n==node)
+            return true;
+            
+        for(int i=1;i<=m;i++){
+            if(possiblecol(i,node,gr,col,n)){
+                col[node] = i;
+                if(solve(node+1,n,gr,col,m))
+                    return true;
+                
+                col[node] = 0;
+            }
+        }
+        
+        return false;
+    }
+
+bool graphColoring(bool graph[101][101], int m, int n) {
+    // your code here
+    vector<int> adj[n];
+    
+    int i,j;
+ 
+        
+        vector<int> color(n);
+        
+        return solve(0,n,graph,color,m);
+
+}
+
+void dfs(int row,int col,vector<vector<int>> &m,int n,string op,vector<string>& ans){
+    if(row<0 || col<0 || row>=n || col>=n || m[row][col]==0) return;
+       
+    if(row==n-1 && col==n-1){
+        ans.push_back(op);return;
+    }
+       //do
+    m[row][col]=0;
+    dfs(row+1,col,m,n,op+'D',ans);
+    dfs(row-1,col,m,n,op+'U',ans);
+    dfs(row,col+1,m,n,op+'R',ans);
+    dfs(row,col-1,m,n,op+'L',ans);
+    m[row][col]=1;
+}
+
+vector<string> findPath(vector<vector<int>> &m, int n) {
+    if(m[0][0]==0 || m[n-1][n-1]==0) return {"-1"};
+    vector<string> ans;
+    string op="";
+    dfs(0,0,m,n,op,ans);
+    return ans;
+}
+
 int main(){
 
 }
