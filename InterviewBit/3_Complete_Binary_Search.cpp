@@ -419,7 +419,7 @@ bool isPackages(vector<int> &a, int &b, int c)
 }
 
 
-int paint(int A, int B, vector<int> &C) 
+int paintersPartitionProblem(int A, int B, vector<int> &C) 
 {
     int mod = 10000003;
     int maxCapacity = 0;
