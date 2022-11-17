@@ -52,3 +52,60 @@ int main(){
         cout<< fixed << setprecision(6) << ans <<endl;
     }
 }
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// void dfs(int node, int dest, vector<int> adj[], vector<int> &vis, int &count)
+// {
+//     if (node == dest){
+//         count += 1;
+//     }
+//     vis[node] = 1;
+//     for (auto it : adj[node])
+//     {
+//         if (!vis[it]){
+//             dfs(it, dest, adj, vis, count);
+//         }
+//     }
+//     vis[node] = 0;
+// }
+
+// int countPaths(int V, vector<int> adj[], int source, int destination)
+// {
+//     vector<int> vis(V, 0);
+//     int count = 0;
+//     dfs(source, destination, adj, vis, count);
+//     return count;
+// }
+
+// int main()
+// {
+//     int t;
+//     cin >> t;
+//     while (t--)
+//     {
+//         int n, e;
+//         cin >> n >> e;
+//         vector<int> mat[n];
+//         for (int i = 0; i < e; i++)
+//         {
+//             int u,v;
+//             cin>>u>>v;
+//             mat[u].push_back(v);
+//         }
+//         int a, b, c;
+//         cin >> a >> b >> c;
+//         int ans = countPaths(n , mat , a , b);
+//         // cout<<ans<<endl;
+//         if (ans == c)
+//         {
+//             cout<<"YES"<<endl;
+//         }
+//         else
+//         {
+//             cout<<"NO"<<endl;
+//         }
+//     }
+// }
