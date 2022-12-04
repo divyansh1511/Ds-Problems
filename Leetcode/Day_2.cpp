@@ -409,13 +409,15 @@ node* reveknodeingrp(node* head , int k){
     node* curr = head;
     node* tmp = NULL;
     node* prev = NULL;
+    int count = 0;
 
-    while (curr != NULL)
+    while (curr != NULL && count < k)
     {
         tmp = curr->next;
         curr->next = prev;
         prev = curr;
         curr = tmp;
+        count++;
     }
     
     if (tmp != NULL)
