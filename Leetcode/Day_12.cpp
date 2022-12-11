@@ -181,7 +181,7 @@ int kthSmallest(vector<vector<int>> &arr, int k)
     return maxheap.top();
 }
 
-//-----------------------------383. Rnasom number -----------------------------//
+//-----------------------------383. Ransom number -----------------------------//
 
 bool canConstruct(string ransomNote, string magazine)
 {
