@@ -207,7 +207,7 @@ int MatrixMedian(vector<vector<int>> arr , int r , int c){
     {
         int mid = (minelement + maxelement)/2;
         int place = 0;
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < r; i++)
         {
             place += upper_bound(arr[i].begin() , arr[i].end() , mid) - arr[i].begin();
         }
