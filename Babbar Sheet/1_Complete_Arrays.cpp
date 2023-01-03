@@ -92,7 +92,7 @@ int UnionOf2arrays(int arr1[] , int n , int arr2[] , int m){
 }
 
 void rotateArray(int arr[] , int n){
-    int t = arr[0];
+    int t = arr[n-1];
     for (int i = n-1; i > 0; i--)
     {
         arr[i] = arr[i-1];
