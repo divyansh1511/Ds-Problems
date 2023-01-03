@@ -75,7 +75,7 @@ int MedianInRowWiseSortedMatrix(vector<vector<int>> v){
         maxele = max(maxele , v[i][m-1]);
     }
     
-    int n = (n*m+1)/2;
+    int a = (n*m+1)/2;
     while (minele < maxele)
     {
         int mid = (minele+maxele)/2;
@@ -84,7 +84,7 @@ int MedianInRowWiseSortedMatrix(vector<vector<int>> v){
         {
             p += upper_bound(v[i].begin() , v[i].end() , mid) - v[i].begin();
         }
-        if (p < n)
+        if (p < a)
         {
             minele = mid+1;
         }
