@@ -80,9 +80,9 @@ vector<vector<int>> ThreeSum_M1(vector<int> v){
     int n = v.size();
     for (int i = 0; i < n-2; i++)
     {
-        for (int j = 0; j < n-1; j++)
+        for (int j = 1; j < n-1; j++)
         {
-            for (int k = 0; k < n; k++)
+            for (int k = 2; k < n; k++)
             {
                 if (v[i]+v[j]+v[k] == 0)
                 {
@@ -387,7 +387,7 @@ node* mergeksortedlist(vector<node*> v){
 //-----------------------------------24. Swap Pairs----------------------------------//
 
 node* swapPairs(node* head){
-    if (head == NULL)
+    if (head == NULL || head->next == NULL)
     {
         return head;
     }
