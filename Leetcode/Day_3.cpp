@@ -126,13 +126,15 @@ bool ValidSudoku(vector<vector<char>> &board){
     {
         for (int j = 0; j < board[0].size(); j++)
         {
-            int num = board[i][j] - '0' - 1;
-            int k = (i/3) * 3 + j/3;
-            if (count1[i][num] || count2[j][num] || count3[k][num])
-            {
-                return false;
+            if(board[i][j] != '0'){
+                int num = board[i][j] - '0' - 1;
+                int k = (i/3) * 3 + j/3;
+                if (count1[i][num] || count2[j][num] || count3[k][num])
+                {
+                    return false;
+                }
+                count1[i][num] = count2[j][num] = count3[k][num] = 1;
             }
-            count1[i][num] = count2[j][num] = count3[k][num] = 1;
         }
     }
     return true;
