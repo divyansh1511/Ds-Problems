@@ -312,7 +312,7 @@ int MaximumDepthTree(treenode* root){
     {
         return 0;
     }
-    return max(MaximumDepthTree(root->left) , MaximumDepthTree(root->right));
+    return max(MaximumDepthTree(root->left) , MaximumDepthTree(root->right))+1;
 }
 
 //---------------------105. Construct Binary Tree from preorder and Inorder --------------------//
