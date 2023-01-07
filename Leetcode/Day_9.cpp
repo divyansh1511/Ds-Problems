@@ -291,7 +291,7 @@ int minsubarr(int arr[], int n, int key)
         sum += arr[r++];
         while (sum >= key)
         {
-            len = max(len, r - l);
+            len = min(len, r - l);
             sum -= arr[l++];
         }
     }
