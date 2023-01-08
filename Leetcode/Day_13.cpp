@@ -85,7 +85,7 @@ void helper(treenode *root, int &sum)
     {
         return;
     }
-    if (root->left && root->left == NULL && root->right == NULL)
+    if (root->left && root->left->left == NULL && root->left->right == NULL)
     {
         sum += root->left->data;
         helper(root->right, sum);
