@@ -59,6 +59,7 @@ int guessNumber(int n)
             maxNumber = meanNumber - 1;
         }
     }
+    return -1;
 }
 
 //------------------------------------375. Guess The Number II---------------------------//
