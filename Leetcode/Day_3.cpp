@@ -155,7 +155,7 @@ bool issafe(vector<vector<char>> &board , int i , int j , char c){
     
     for (int x = 0; x < 9; x++)
     {
-        if (board[x][j] == x)
+        if (board[x][j] == c)
         {
             return false;
         }
