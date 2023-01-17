@@ -51,7 +51,7 @@ int MedianofRowwisesorted(vector<vector<int>> &v , int r , int c){
         }
         if (place < n)
         {
-            minelement = mid;
+            minelement = mid+1;
         }
         else
         {
