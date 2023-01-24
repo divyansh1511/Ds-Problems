@@ -299,7 +299,146 @@ int findLength(vector<int> &nums1, vector<int> &nums2)
     return ans;
 }
 
-//---------------------------------
+//---------------------------------733. Flood Fill ----------------------------------//
+
+void dfs(vector<vector<int>> &image, int i, int j, int val, int newColor)
+{
+    if (i < 0 || i >= image.size() || j < 0 || j >= image[0].size() || image[i][j] == newColor || image[i][j] != val)
+    {
+        return;
+    }
+    image[i][j] = newColor;
+    dfs(image, i - 1, j, val, newColor);
+    dfs(image, i + 1, j, val, newColor);
+    dfs(image, i, j - 1, val, newColor);
+    dfs(image, i, j + 1, val, newColor);
+}
+
+vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor)
+{
+    int val = image[sr][sc];
+    dfs(image, sr, sc, val, newColor);
+    return image;
+}
+
+//------------------------------735. Asteroids Collisions -------------------------//
+
+vector<int> AsteroidCollion(vector<int> v)
+{
+    vector<int> ans;
+    stack<int> st;
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (v[i] > 0)
+        {
+            st.push(v[i]);
+        }
+        else
+        {
+            while (st.size() > 0 && st.top() > 0 && st.top() < abs(v[i]))
+            {
+                st.pop();
+            }
+            if (st.size() > 0 && st.top() == v[i])
+            {
+                st.pop();
+            }
+            else if (st.size() > 0 && st.top() > -v[i])
+            {
+            }
+            else
+            {
+                st.push(v[i]);
+            }
+        }
+    }
+    while (!st.empty())
+    {
+        ans.push_back(st.top());
+        st.pop();
+    }
+    reverse(ans.begin(), ans.end());
+    return ans;
+}
+
+//--------------------------------738. Monotone Increasing Digits ---------------------------//
+
+int monotoneIncreasingDigits(int n)
+{
+    if (n < 10)
+    {
+        return n;
+    }
+    string s = to_string(n);
+    int index = s.length();
+    int i;
+    for (i = index - 1; i > 0; i--)
+    {
+        if (s[i - 1] > s[i])
+        {
+            s[i - 1]--;
+            index = i;
+        }
+    }
+    for (i = index; i < s.length(); i++)
+    {
+        s[i] = '9';
+    }
+    n = stoi(s);
+    return n;
+}
+
+//---------------------------------739. Daily Temperatures ------------------------------//
+
+vector<int> dailyTemperatures(vector<int> &temperatures)
+{
+    if (temperatures.empty())
+    {
+        return {};
+    }
+    stack<pair<int, int>> st;
+    st.push(make_pair(temperatures.back(), 0));
+    vector<int> v(temperatures.size(), 0);
+    for (int i = temperatures.size() - 2; i >= 0; i--)
+    {
+        int count = 1;
+        while (!st.empty() && temperatures[i] >= st.top().first)
+        {
+            count += st.top().second;
+            st.pop();
+        }
+        if (st.empty())
+        {
+            st.push(make_pair(temperatures[i], 0));
+        }
+        else
+        {
+            st.push(make_pair(temperatures[i], count));
+            v[i] = count;
+        }
+    }
+    return v;
+}
+
+//------------------------------------740. Delete And Earn ---------------------------------//
+
+int deleteAndEarn(vector<int> &nums)
+{
+    int n = 10001;
+    vector<int> values(n, 0);
+    for (int num : nums)
+        values[num] += num;
+
+    int take = 0, skip = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int takei = skip + values[i];
+        int skipi = max(skip, take);
+        take = takei;
+        skip = skipi;
+    }
+    return max(take, skip);
+}
 
 int main()
 {
